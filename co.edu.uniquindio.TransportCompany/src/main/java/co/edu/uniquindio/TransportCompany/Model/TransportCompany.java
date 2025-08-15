@@ -1,5 +1,6 @@
 package co.edu.uniquindio.TransportCompany.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransportCompany {
@@ -12,6 +13,7 @@ public class TransportCompany {
     public TransportCompany(String nombre, String nit) {
         this.nombre = nombre;
         this.nit = nit;
+        this.vehiculoTransportes = new ArrayList<>();
     }
 
     public String getNombre() {
