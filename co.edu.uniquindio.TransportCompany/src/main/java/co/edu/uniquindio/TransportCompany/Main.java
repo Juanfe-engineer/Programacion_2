@@ -77,7 +77,6 @@ public class Main {
                 String pasajeros = JOptionPane.showInputDialog(
                         "Viaje " + i + " de " + numeroViajes + "\n" +
                                 "¿Cuantos pasajeros se transportaron?");
-
                 int pasajerosViajes = Integer.parseInt(pasajeros);
                 totalPasajeros += pasajerosViajes;
             }
@@ -89,7 +88,6 @@ public class Main {
                     "VIAJES REALIZADOS: " + numeroViajes + "\n" +
                     "TOTAL PASAJEROS TRANSPORTADOS: " + totalPasajeros + "\n" +
                     "PROMEDIO POR VIAJE: " + (totalPasajeros / numeroViajes);
-
             JOptionPane.showMessageDialog(null, reporte, "Resultado", JOptionPane.INFORMATION_MESSAGE);
         } else{
             JOptionPane.showMessageDialog(null,
