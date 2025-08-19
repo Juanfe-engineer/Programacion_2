@@ -6,8 +6,8 @@ public class VehiculoCarga extends Vehiculo {
 
     public VehiculoCarga(String placa, String marca, String modelo, String color, double capacidadCarga, int numeroEjes) {
         super(placa, marca, modelo, color);
-        this.numeroEjes = numeroEjes;
         this.capacidadCarga = capacidadCarga;
+        this.numeroEjes = numeroEjes;
     }
     public double getCapacidadCarga() {
         return capacidadCarga;
@@ -20,5 +20,17 @@ public class VehiculoCarga extends Vehiculo {
     }
     public void setNumeroEjes(int numeroEjes) {
         this.numeroEjes = numeroEjes;
+    }
+
+    @Override
+    public String toString() {
+        return "VehiculoCarga{" +
+                "placa='" + getPlaca() + '\'' +
+                ", marca='" + getMarca() + '\'' +
+                ", modelo='" + getModelo() + '\'' +
+                ", color='" + getColor() + '\'' +
+                ", pesoMaximo=" + capacidadCarga +
+                ", numeroEjes=" + numeroEjes +
+                '}';
     }
 }

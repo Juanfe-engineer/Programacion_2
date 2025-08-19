@@ -6,16 +6,16 @@ import java.util.List;
 public class TransportCompany {
     private String nombre;
     private String nit;
-    private Propietario propietario;
-    private VehiculoCarga vehiculoCarga;
-    private List<VehiculoTransporte> vehiculoTransportes;
+    private List<Propietario> propietarios;
+    private List<Vehiculo> vehiculos;
 
     public TransportCompany(String nombre, String nit) {
         this.nombre = nombre;
         this.nit = nit;
-        this.vehiculoTransportes = new ArrayList<>();
-    }
+        this.propietarios = new ArrayList<>();
+        this.vehiculos = new ArrayList<>();
 
+    }
     public String getNombre() {
         return nombre;
     }
@@ -28,23 +28,18 @@ public class TransportCompany {
     public void setNit(String nit){
         this.nit = nit;
     }
-    public Propietario getPropietario() {
-        return propietario;
+    public List<Propietario> getPropietarios() {
+        return propietarios;
     }
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
+    public void setPropietarios(List<Propietario> propietarios) {
+        this.propietarios = propietarios;
     }
-    public VehiculoCarga getVehiculoCarga() {
-        return vehiculoCarga;
+    public List<Vehiculo> getVehiculos() {
+        return vehiculos;
     }
-    public void setVehiculoCarga(VehiculoCarga vehiculoCarga) {
-        this.vehiculoCarga = vehiculoCarga;
+    public void setVehiculos(List<Vehiculo> vehiculos) {
+        this.vehiculos = vehiculos;
     }
-    public List<VehiculoTransporte> getVehiculoTransportes() {
-        return vehiculoTransportes;
-    }
-    public void setVehiculoTransportes(List<VehiculoTransporte> vehiculoTransportes) {
-        this.vehiculoTransportes = vehiculoTransportes;
-    }
+
 
 }
