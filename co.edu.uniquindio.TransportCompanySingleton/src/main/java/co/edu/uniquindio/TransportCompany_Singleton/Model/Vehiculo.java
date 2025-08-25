@@ -1,6 +1,6 @@
 package co.edu.uniquindio.TransportCompany_Singleton.Model;
 
-public class Vehiculo {
+public abstract class Vehiculo {
     private String placa;
     private String modelo;
     private String marca;

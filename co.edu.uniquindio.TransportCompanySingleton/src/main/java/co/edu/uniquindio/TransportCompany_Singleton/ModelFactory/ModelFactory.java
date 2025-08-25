@@ -23,11 +23,16 @@ public class ModelFactory {
     // ============= PUNTO 1 ===============
 
     public void inicializarDatosPrueba(){
-        VehiculoTransporte vt1 = new VehiculoTransporte("ABC345", "Toyota", "Coaster", "Blanco", 25);
-        VehiculoTransporte vt2 = new VehiculoTransporte("DRH489", "Mercedes", "Sprinter", "Gris", 20);
-        VehiculoTransporte vt3 = new VehiculoTransporte("CKL771", "Chevrolet", "NQR", "Azul", 30);
-        VehiculoCarga vc1 = new VehiculoCarga("KSN73F", "Volvo", "FH", "Rojo", 4, 3);
-        VehiculoCarga vc2 = new VehiculoCarga("POH53H", "Foton", "Aumark", "Negro", 3, 3);
+        VehiculoTransporte vt1 = new VehiculoTransporte("ABC345",
+                "Toyota", "Coaster", "Blanco", 25);
+        VehiculoTransporte vt2 = new VehiculoTransporte("DRH489",
+                "Mercedes", "Sprinter", "Gris", 20);
+        VehiculoTransporte vt3 = new VehiculoTransporte("CKL771",
+                "Chevrolet", "NQR", "Azul", 30);
+        VehiculoCarga vc1 = new VehiculoCarga("KSN73F",
+                "Volvo", "FH", "Rojo", 4, 3);
+        VehiculoCarga vc2 = new VehiculoCarga("POH53H",
+                "Foton", "Aumark", "Negro", 3, 3);
 
         empresa.getVehiculos().add(vt1);
         empresa.getVehiculos().add(vt2);
@@ -35,9 +40,12 @@ public class ModelFactory {
         empresa.getVehiculos().add(vc1);
         empresa.getVehiculos().add(vc2);
 
-        Propietario prop1 = new Propietario("Carlos Mendez", "12345","carlos@gmail.com","3009876453",38,58.7);
-        Propietario prop2 = new Propietario("Ana García", "67890", "ana@mail.com", "3001234567", 45,65.6);
-        Propietario prop3 = new Propietario("Luis Torres", "11111", "luis@mail.com", "3007891234", 35,78.9);
+        Propietario prop1 = new Propietario("Carlos Mendez", "12345",
+                "carlos@gmail.com","3009876453",38,58.7);
+        Propietario prop2 = new Propietario("Ana García", "67890",
+                "ana@mail.com", "3001234567", 45,65.6);
+        Propietario prop3 = new Propietario("Luis Torres", "11111",
+                "luis@mail.com", "3007891234", 35,78.9);
 
         prop1.getVehiculos().add(vc1);
         prop2.getVehiculos().add(vc2);
@@ -59,7 +67,8 @@ public class ModelFactory {
 
     public void crearPropietarioVehiculoCarga(){
         try {
-            JOptionPane.showMessageDialog(null, "Registro de nuevo propietario y vehiculo de carga");
+            JOptionPane.showMessageDialog(null,
+                    "Registro de nuevo propietario y vehiculo de carga");
 
             // Datos del propietario
 

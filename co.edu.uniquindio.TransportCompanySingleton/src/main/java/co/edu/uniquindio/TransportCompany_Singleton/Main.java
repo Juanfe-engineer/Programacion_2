@@ -458,12 +458,13 @@ public class Main {
         try {
             JOptionPane.showMessageDialog(null,
                     "═════════════════════════════════════════\n" +
-                             "         ¡BIENVENIDO!\n" +
-                             "      SISTEMA DE TRANSPORTE\n" +
-                             "         'LA CARRETA'\n" +
+                             "                       ¡BIENVENIDO!\n" +
+                             "                 SISTEMA DE TRANSPORTE\n" +
+                             "                       'LA CARRETA'\n" +
                              "═════════════════════════════════════════\n\n" +
                              "Sistema de gestión con patrón Singleton\n" +
-                             "Desarrollado con JOptionPane",
+                             "Desarrollado por Juan Felipe, Johan Stiven" +
+                            " y Samuel Arturo",
                     "Bienvenida",
                     JOptionPane.INFORMATION_MESSAGE);
 
