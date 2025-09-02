@@ -26,7 +26,6 @@ public class ServicioHabitacion extends Servicio{
 
     //Getters and Setters
 
-
     public TipoServicioHabitacion getTipoServicioHabitacion() {
         return tipoServicioHabitacion;
     }
