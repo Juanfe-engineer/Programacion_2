@@ -12,6 +12,8 @@ public class ModelFactory {
     private TransportCompany empresa;
     private ModelFactory() {
         empresa = new TransportCompany("La carreta", "900456782");
+        VehiculoCargaRepositorio vehiculorepositorio = new VehiculoCargaRepositorio();
+        VehiculoTransporteRepositorio vehiculoTransporteRepositorio = new VehiculoTransporteRepositorio();
     }
     public static ModelFactory getInstance() {
         if (instance == null) {

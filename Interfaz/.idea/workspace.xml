@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ccb1bf07-9e24-4300-afcb-86bd4ac54307" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/Model/Cafeteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/ViewController/ClienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../co.edu.uniquindio.Hotel.parcial1_Juan.Felipe.Ibarra/src/main/java/co/edu/uniquindio/Model/SalonEvento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../co.edu.uniquindio.Hotel.parcial1_Juan.Felipe.Ibarra/src/main/java/co/edu/uniquindio/Model/SalonEventoBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../co.edu.uniquindio.Hotel.parcial1_Juan.Felipe.Ibarra/src/main/java/co/edu/uniquindio/ModelFactory/ServicioFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../co.edu.uniquindio.Hotel.parcial1_Juan.Felipe.Ibarra/src/main/java/co/edu/uniquindio/ModelFactory/ServicioHabitacionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../co.edu.uniquindio.Hotel.parcial1_Juan.Felipe.Ibarra/src/main/java/co/edu/uniquindio/ModelFactory/ServicioLavanderiaFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../co.edu.uniquindio.Hotel.parcial1_Juan.Felipe.Ibarra/src/main/java/co/edu/uniquindio/ModelFactory/ServicioRestauranteFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../co.edu.uniquindio.Hotel.parcial1_Juan.Felipe.Ibarra/src/main/java/co/edu/uniquindio/ModelFactory/ServicioSpaFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../co.edu.uniquindio.Hotel.parcial1_Juan.Felipe.Ibarra/src/main/java/co/edu/uniquindio/Services/ServicioFactoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Model/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Model/Habitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Model/Habitacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Model/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Model/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/Model/Reserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/ModelFactory/HotelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SistemaReservasHotel/src/main/java/co/edu/uniquindio/ModelFactory/HotelFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../co.edu.uniquindio.TransportCompanySingleton/src/main/java/co/edu/uniquindio/TransportCompany_Singleton/ModelFactory/ModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../co.edu.uniquindio.TransportCompanySingleton/src/main/java/co/edu/uniquindio/TransportCompany_Singleton/ModelFactory/ModelFactory.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="337aHSf1zeO4FNM566pkH1e74jX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dev-programming__2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ccb1bf07-9e24-4300-afcb-86bd4ac54307" name="Changes" comment="" />
+      <created>1758670485482</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758670485482</updated>
+      <workItem from="1758670487849" duration="711000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

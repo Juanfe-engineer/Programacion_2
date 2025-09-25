@@ -25,7 +25,7 @@ public class Reserva {
         this.habitacion = habitacion;
         this.fechaEntrada = fechaEntrada;
         this.fechaSalida = fechaSalida;
-        this.serviciosContratados = serviciosContratados;
+        this.serviciosContratados = new ArrayList<>(serviciosContratados);
         this.descuento = descuento;
         this.metodoPago = metodoPago;
         this.servicioManager = new ServicioManager();

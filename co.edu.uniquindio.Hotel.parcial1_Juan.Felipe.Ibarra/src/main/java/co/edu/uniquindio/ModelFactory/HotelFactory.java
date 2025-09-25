@@ -2,6 +2,7 @@ package co.edu.uniquindio.ModelFactory;
 
 import co.edu.uniquindio.Model.*;
 import co.edu.uniquindio.Services.ServicioManager;
+import co.edu.uniquindio.Services.ServicioFactoryManager;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,8 +12,12 @@ import java.util.List;
 public class HotelFactory {
     private static HotelFactory instance;
     private Hotel hotel;
+    private ServicioFactoryManager servicioFactoryManager;
+
+
     private HotelFactory() {
         hotel = new Hotel("Hotel Uniquindio", "900654732");
+        servicioFactoryManager = new ServicioFactoryManager();
     }
 
     public static HotelFactory getInstance() {
@@ -92,14 +97,32 @@ public class HotelFactory {
                 .MetodoPago("Transferencia")
                 .build();
 
+        SalonEvento salon1 = SalonEvento.builder()
+                        .idSalon("123456")
+                                .capacidad("28")
+                                        .estado(false)
+                                                .descripcion("Fiesta de Cumpleaños")
+                                                        .build();
+
+        SalonEvento salon2 = SalonEvento.builder()
+                        .idSalon("987654")
+                                .capacidad("40")
+                                        .estado(true)
+                                                .descripcion("Fiesta de Graduados")
+                                                        .build();
+
+
         hotel.agregarReserva(reserva1);
         hotel.agregarReserva(reserva2);
         hotel.agregarReserva(reserva3);
+        hotel.agregarSalonEvento(salon1);
+        hotel.agregarSalonEvento(salon2);
 
         System.out.println("Hotel inicializado con:");
         System.out.println("   - " + hotel.getHabitaciones().size() + " habitaciones");
         System.out.println("   - " + hotel.getClientes().size() + " clientes");
         System.out.println("   - " + hotel.getReservas().size() + " reservas iniciales");
+        System.out.println("   - " + hotel.getSalonEventos().size() + " salones");
         hotel.mostrarEstadoGeneral();
 
 
@@ -422,38 +445,7 @@ public class HotelFactory {
 
 
 
-    // ============ FUNCIONALIDADES ===============
-
-    // "Check-in Express" - Cliente, Habitacion, Hotel
-
-    public String procesarCheckInExpress(){
-        String dniCliente = "12345678"; // Juan Perez que tiene reserva activa
-        System.out.println("\n=== CHECK-IN EXPRESS ===");
-        System.out.println("Procesando check-in para cliente DNI: " + dniCliente);
-
-        Cliente cliente = hotel.buscarClientePorDni(dniCliente);
-        if(cliente == null){
-            return "Cliente no encontrado con DNI: " + dniCliente;
-        }
-
-        if(cliente.getReservasActivas().isEmpty()){
-            return "El cliente " + cliente.getNombre() + " no tiene reservas activas";
-        }
-
-        Reserva reservaActiva = cliente.getReservasActivas().get(0);
-        Habitacion habitacion = reservaActiva.getHabitacion();
-
-        String mensaje = "CHECK-IN COMPLETADO\n" +
-                "═══════════════════\n" +
-                "Bienvenido " + cliente.getNombre() + "\n" +
-                "Habitación asignada: " + habitacion.getIdHabitacion() + " (" + habitacion.getTipoHabitacion() + ")\n" +
-                "Precio por noche: $" + habitacion.getPrecioHabitacion() + "\n" +
-                "Servicios incluidos: " + reservaActiva.getServiciosContratados().size() + "\n" +
-                "Costo total estancia: $" + String.format("%.2f", reservaActiva.calcularCostoTotal());
-
-        System.out.println(mensaje);
-        return mensaje;
-    }
+    // ============ FUNCIONALIDADES ==============
 
 
 
@@ -496,89 +488,43 @@ public class HotelFactory {
 
 
 
-    // "Optimizador Automatico de servicios VIP" - Cliente , Reserva, ServicioManager, multiples servicios
+    // PARCIAL
 
-    public String optimizarServiciosVIP(){
-        String dniCliente = "87654321"; // Maria garcia que tiene reserva de suite
-        ServicioManager manager = new ServicioManager();
-        System.out.println("\n=== OPTIMIZADOR VIP AUTOMATICO ===");
-        System.out.println("Analizando cliente con DNI: " + dniCliente);
+    // Crear salon eventos
 
-        Cliente cliente = hotel.buscarClientePorDni(dniCliente);
-        if(cliente == null){
-            return "Cliente no encontrado";
-        }
+    public String crearSalon(){
+        System.out.println("\n== CREAR SALON ==");
+        String idSalon = "123456";
+        String capacidad = "28";
+        boolean estado = true;
+        String descripcion = "Fiesta de cumpleaños";
 
-        if(cliente.getReservasActivas().size() < 2){
-            Habitacion habitacionExtra = hotel.buscarHabitacionPorId(202);
-            if(habitacionExtra != null && habitacionExtra.isDisponible()){
-                Reserva reservaExtra = Reserva.builder()
-                        .Cliente(cliente)
-                        .Habitacion(habitacionExtra)
-                        .FechaEntrada(LocalDate.now().plusDays(10))
-                        .FechaSalida(LocalDate.now().plusDays(12))
-                        .MetodoPago("Tarjeta de credito")
-                        .build();
-                hotel.agregarReserva(reservaExtra);
-                System.out.println("Segunda reserva agregada para calificar como VIP...");
-            }
-        }
+        SalonEvento nuevoSalon = new SalonEvento(idSalon,capacidad,estado,descripcion);
+        boolean resultado = hotel.agregarSalonEvento(nuevoSalon);
 
-        boolean esVIP = cliente.getReservasActivas().size() >= 2;
-        if(!esVIP){
-            return "Cliente " + cliente.getNombre() + " no califica como VIP";
-        }
+        String mensaje = resultado ?
+                "Salon creado exitosamente.": "Error!";
 
-        System.out.println("Cliente VIP detectado: " + cliente.getNombre());
+        System.out.println(mensaje);
+        return mensaje;
 
-        List<Servicio> paqueteVIP = new ArrayList<>();
-
-        for (Reserva reserva : cliente.getReservasActivas()){
-            String tipoHabitacion = String.valueOf(reserva.getHabitacion().getTipoHabitacion());
-
-            switch (tipoHabitacion){
-                case "suite":
-                    paqueteVIP.add(new ServicioSpa("Masaje VIP Executive",true));
-                    paqueteVIP.add(new ServicioRestaurante("Cena Gourmet privada",true));
-                    paqueteVIP.add(new ServicioLavanderia(true,true));
-                    break;
-                case "doble":
-                    paqueteVIP.add(new ServicioSpa("Terapia de pareja",false));
-                    paqueteVIP.add(new ServicioRestaurante("Cena romantica",false));
-                    break;
-                case "simple":
-                    paqueteVIP.add(new ServicioRestaurante("Desayuno continental", true));
-                    paqueteVIP.add(new ServicioHabitacion("Servicio premium", 40.0,TipoServicioHabitacion.LIMPIEZA));
-                    break;
-            }
-
-        }
-
-        double descuentoVIP = Math.min(0.3, cliente.getReservasActivas().size() * 0.08);
-
-        Reserva reservaPrincipal = cliente.getReservasActivas().get(0);
-        double costoOriginal = reservaPrincipal.calcularCostoTotal();
-
-        for (Servicio servicio : paqueteVIP){
-            reservaPrincipal.agregarServicio(servicio);
-        }
-
-        reservaPrincipal.setDescuento(descuentoVIP);
-        double costoFinal = reservaPrincipal.calcularCostoTotal();
-
-        String resultado = "OPTIMIZACIÓN VIP COMPLETADA\n" +
-                "══════════════════════════════\n" +
-                "Cliente: " + cliente.getNombre() + "\n" +
-                "Reservas activas: " + cliente.getReservasActivas().size() + "\n" +
-                "Servicios agregados: " + paqueteVIP.size() + "\n" +
-                "Descuento VIP aplicado: " + String.format("%.0f", descuentoVIP * 100) + "%\n" +
-                "Costo original: $" + String.format("%.2f", costoOriginal) + "\n" +
-                "Costo final: $" + String.format("%.2f", costoFinal) + "\n" +
-                "Ahorro total: $" + String.format("%.2f", costoOriginal - costoFinal) + "\n" +
-                "Servicios personalizados creados automáticamente";
-
-        System.out.println(resultado);
-        return resultado;
     }
 
+
+    public String eliminarSalon(){
+        System.out.println("\n== ELIMINAR SALON");
+        String dniSalon = "987654";
+
+        boolean resultado = hotel.eliminarSalonEvento(dniSalon);
+        String mensaje = resultado ?
+                "Salon de eventos eliminado exitosamente: " + dniSalon :
+                "Error!";
+        System.out.println(mensaje);
+        return mensaje;
+    }
+
+
+
 }
+
+

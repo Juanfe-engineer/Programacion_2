@@ -37,8 +37,8 @@ public class Main {
     private static void mostrarBienvenida() {
         limpiarPantalla();
         System.out.println(SEPARADOR);
-        System.out.println("🏨           SISTEMA DE GESTIÓN HOTELERA           🏨");
-        System.out.println("           Hotel Uniquindio - Versión 1.0");
+        System.out.println("           SISTEMA DE GESTIÓN HOTELERA           ");
+        System.out.println("           Hotel Uniquindio              ");
         System.out.println(SEPARADOR);
         System.out.println("✓ Datos de prueba precargados");
         System.out.println("✓ Funcionalidades especiales incluidas");
@@ -50,7 +50,7 @@ public class Main {
     private static void mostrarMenuPrincipal() {
         limpiarPantalla();
         System.out.println(SEPARADOR);
-        System.out.println("🏨                    MENÚ PRINCIPAL                    🏨");
+        System.out.println("                    MENÚ PRINCIPAL                    ");
         System.out.println(SEPARADOR);
 
         System.out.println(" GESTIÓN DE CLIENTES");
@@ -77,9 +77,12 @@ public class Main {
         System.out.println("   17. Cancelar Reserva");
 
         System.out.println("\n FUNCIONALIDADES ESPECIALES");
-        System.out.println("   18. Check-in Express");
-        System.out.println("   19. Generar Reporte de Ocupación");
-        System.out.println("   20. Optimizador de Servicios VIP");
+        System.out.println("   18. Generar Reporte de Ocupación");
+
+        System.out.println("\n Parcial");
+
+        System.out.println("   19. Crear Salon eventos        ");
+        System.out.println("   20. Eliminar Salon eventos     ");
 
         System.out.println("\n SALIR");
         System.out.println("   0. Salir del Sistema");
@@ -95,10 +98,10 @@ public class Main {
             System.out.print(" Seleccione una opción (0-20): ");
             try {
                 opcion = Integer.parseInt(scanner.nextLine().trim());
-                if (opcion >= 0 && opcion <= 21) {
+                if (opcion >= 0 && opcion <= 20) {
                     opcionValida = true;
                 } else {
-                    System.out.println(" Opción fuera de rango. Ingrese un número entre 0 y 21.");
+                    System.out.println(" Opción fuera de rango. Ingrese un número entre 0 y 20.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println(" Por favor ingrese un número válido.");
@@ -107,6 +110,7 @@ public class Main {
 
         return opcion;
     }
+
 
     private static void ejecutarOpcion(HotelFactory factory, int opcion) {
         String resultado;
@@ -217,22 +221,23 @@ public class Main {
                 break;
 
             case 18:
-                mostrarTituloOperacion("CHECK-IN EXPRESS");
-                mostrarInfoOperacion("Procesando check-in para Juan Perez (DNI: 12345678)");
-                factory.procesarCheckInExpress();
-                break;
-
-            case 19:
                 mostrarTituloOperacion("REPORTE DE OCUPACIÓN");
                 mostrarInfoOperacion("Generando reporte completo del estado del hotel");
                 factory.generarRporteOcupacion();
                 break;
 
-            case 20:
-                mostrarTituloOperacion("OPTIMIZADOR DE SERVICIOS VIP");
-                mostrarInfoOperacion("Optimizando servicios para Maria Garcia (cliente VIP)");
-                factory.optimizarServiciosVIP();
+
+            case 19:
+                mostrarTituloOperacion("CREAR SALON EVENTOS NUEVO");
+                mostrarInfoOperacion("Creando salon de eventos....");
+                factory.crearSalon();
                 break;
+
+            case 20:
+                mostrarInfoOperacion("ELIMINAR SALON DE EVENTOS");
+                mostrarInfoOperacion("Eliminando salon de eventos...");
+                factory.eliminarSalon();
+
 
             case 0:
                 break;
@@ -261,7 +266,7 @@ public class Main {
     }
 
     private static void pausar(Scanner scanner) {
-        System.out.println("\n⏸️  Presione Enter para volver al menú principal...");
+        System.out.println("\n Presione Enter para volver al menú principal...");
         scanner.nextLine();
     }
 

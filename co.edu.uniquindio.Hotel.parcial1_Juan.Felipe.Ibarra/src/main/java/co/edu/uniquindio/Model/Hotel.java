@@ -10,6 +10,7 @@ public class Hotel {
     private List<Habitacion> habitaciones;
     private List<Cliente> clientes;
     private List<Reserva> reservas;
+    private List<SalonEvento> salonEventos;
 
     public Hotel(String nombre, String nit) {
         this.nombre = nombre;
@@ -17,6 +18,7 @@ public class Hotel {
         this.habitaciones = new ArrayList<>();
         this.clientes = new ArrayList<>();
         this.reservas = new ArrayList<>();
+        this.salonEventos = new ArrayList<>();
     }
 
     // Getters and Setters
@@ -49,7 +51,9 @@ public class Hotel {
         return reservas;
     }
 
-
+    public List<SalonEvento> getSalonEventos() {
+        return salonEventos;
+    }
 
     // =========== CRUD CLIENTE =============
 
@@ -289,4 +293,98 @@ public class Hotel {
     }
 
 
+
+
+
+    // ===== CRUD SALON EVENTO ======
+
+    // CREATE
+
+    public boolean agregarSalonEvento (SalonEvento salonEvento){
+        if(salonEvento.getEstado(false)){
+            salonEventos.add(salonEvento);
+            System.out.println("Salon Agregado: " + salonEvento.getIdSalon());
+            return true;
+        }
+        return false;
+    }
+
+
+    // READ - Buscar por DNI
+
+    public SalonEvento buscarSalonDNI(String dni) {
+        for(SalonEvento salonEvento : salonEventos){
+            if(salonEvento.getIdSalon().equals(dni)){
+                return salonEvento;
+            }
+        }
+        return null;
+    }
+
+
+    // DELETE
+
+    public boolean eliminarSalonEvento(String dni) {
+        SalonEvento salonEvento = buscarSalonDNI(dni);
+        if(salonEvento != null){
+            if(!salonEvento.getEstado(false)){
+                System.out.println("No se puede eliminar un salon Ocupado");
+                return false;
+            }
+
+           salonEventos.remove(salonEvento);
+           System.out.println("Salon eliminado: " + salonEvento.getIdSalon());
+           return true;
+        }
+        System.out.println("Salon no encontrado");
+        return false;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
