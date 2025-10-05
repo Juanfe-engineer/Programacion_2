@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.cafeteria.Controller.ObserverVentana2Controller"
+      prefHeight="400" prefWidth="450"
+      spacing="15" style="-fx-background-color: #f1f8e9; -fx-padding: 20;">
+
+    <children>
+        <Label text="Monitor de Ventas - Caja" textAlignment="CENTER"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #558b2f;">
+            <VBox.margin>
+                <Insets bottom="5" />
+            </VBox.margin>
+        </Label>
+
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15;
+                              -fx-border-color: #aed581; -fx-border-width: 2; -fx-border-radius: 5;">
+            <children>
+                <Label fx:id="estadoLabel" text="Estado: Esperando pedidos"
+                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #33691e;" />
+
+                <Separator />
+
+                <Label fx:id="totalVentasLabel" text="Total ventas: $0.0 | Pedidos: 0"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2e7d32;" />
+            </children>
+        </VBox>
+
+        <VBox VBox.vgrow="ALWAYS" spacing="5">
+            <children>
+                <Label text="LISTA DE PEDIDOS" style="-fx-font-size: 12px; -fx-font-weight: bold;
+                                                -fx-text-fill: #558b2f;" />
+
+                <ListView fx:id="pedidosListView" VBox.vgrow="ALWAYS"
+                          style="-fx-font-size: 12px;" />
+            </children>
+        </VBox>
+
+    </children>
+</VBox>

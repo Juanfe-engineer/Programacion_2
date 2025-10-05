@@ -6,43 +6,43 @@
 <?import javafx.scene.text.*?>
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="CafeController" prefHeight="400.0" prefWidth="500.0"
-      spacing="15" style="-fx-background-color: #f0f0f0; -fx-padding: 20;">
+      fx:controller="co.edu.uniquindio.cafeteria.Controller.CafeController"
+      prefHeight="450" prefWidth="550"
+      spacing="15" style="-fx-background-color: #f5f5f5; -fx-padding: 20;">
 
   <children>
-    <!-- Título -->
-    <Label text="Calculadora de Café" textAlignment="CENTER">
+    <Label text="Cafetería UQ" textAlignment="CENTER">
       <font>
-        <Font name="Arial Bold" size="24.0" />
+        <Font name="Arial Bold" size="26.0" />
       </font>
+      <VBox.margin>
+        <Insets bottom="10" />
+      </VBox.margin>
     </Label>
 
-    <!-- Ingredientes -->
-    <VBox spacing="10">
+    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ddd; -fx-border-radius: 5;">
       <children>
         <Label text="Ingredientes:" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
 
-        <HBox spacing="20">
+        <GridPane hgap="40" vgap="10">
           <children>
-            <CheckBox fx:id="lecheCheckBox" text="Leche" />
-            <CheckBox fx:id="wiskyCheckBox" text="Wisky" />
+            <CheckBox fx:id="lecheCheckBox" text="Leche" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <CheckBox fx:id="wiskyCheckBox" text="Wisky" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <CheckBox fx:id="azucarCheckBox" text="Azúcar" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <CheckBox fx:id="canelaCheckBox" text="Canela" GridPane.columnIndex="1" GridPane.rowIndex="1" />
           </children>
-        </HBox>
-
-        <HBox spacing="20">
-          <children>
-            <CheckBox fx:id="azucarCheckBox" text="Azúcar" />
-            <CheckBox fx:id="canelaCheckBox" text="Canela" />
-          </children>
-        </HBox>
+          <columnConstraints>
+            <ColumnConstraints minWidth="120" />
+            <ColumnConstraints minWidth="120" />
+          </columnConstraints>
+        </GridPane>
       </children>
     </VBox>
 
-    <!-- Tipo de café -->
-    <VBox spacing="8">
+    <VBox spacing="8" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ddd; -fx-border-radius: 5;">
       <children>
         <Label text="Tipo café:" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
-        <HBox spacing="20">
+        <HBox spacing="30">
           <children>
             <RadioButton fx:id="especialRadio" text="Especial" selected="true">
               <toggleGroup>
@@ -55,23 +55,31 @@
       </children>
     </VBox>
 
-    <!-- Botones -->
     <HBox spacing="15" alignment="CENTER">
       <children>
         <Button fx:id="calcularButton" onAction="#calcular" text="Calcular"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"
-                prefWidth="100" />
-        <Button fx:id="metodoButton" onAction="#mostrarMetodo" text="Método preparación"
-                style="-fx-background-color: #2196F3; -fx-text-fill: white;"
-                prefWidth="150" />
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px;"
+                prefWidth="120" prefHeight="35" />
+
+        <ComboBox fx:id="metodoComboBox" promptText="Método preparación"
+                  style="-fx-font-size: 12px;"
+                  prefWidth="180" prefHeight="35" />
+
+        <Button text="Ver Método" onAction="#mostrarMetodo"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 13px;"
+                prefWidth="100" prefHeight="35" />
       </children>
+      <VBox.margin>
+        <Insets top="5" />
+      </VBox.margin>
     </HBox>
 
-    <!-- Resultados -->
-    <VBox spacing="8" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ccc; -fx-border-radius: 5;">
+    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-border-color: #ddd; -fx-border-radius: 5;">
       <children>
-        <Label fx:id="costoLabel" text="Costo: $0.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
-        <Label fx:id="ingredientesLabel" text="Ingredientes: " wrapText="true" />
+        <Label fx:id="costoLabel" text="Costo: $0.0"
+               style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #2e7d32;" />
+        <Label fx:id="ingredientesLabel" text="Ingredientes: "
+               wrapText="true" style="-fx-font-size: 13px;" />
       </children>
     </VBox>
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.cafeteria.Controller.VideoController"
+      prefHeight="300" prefWidth="550"
+      spacing="20" style="-fx-background-color: #f5f5f5; -fx-padding: 25;">
+
+    <children>
+        <Label text="Reproductor de video" textAlignment="CENTER"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-background-color: white;
+                  -fx-padding: 10; -fx-border-color: #ccc; -fx-border-width: 1;">
+            <VBox.margin>
+                <Insets bottom="10" />
+            </VBox.margin>
+        </Label>
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <children>
+                <Label text="Archivo:" style="-fx-font-size: 14px; -fx-font-weight: bold;"
+                       prefWidth="70" />
+
+                <TextField fx:id="archivoTextField" promptText="Seleccione un archivo..."
+                           style="-fx-font-size: 13px;" prefWidth="300" />
+
+                <Button fx:id="cargarButton" text="Cargar archivo" onAction="#cargarArchivo"
+                        style="-fx-background-color: #8BC34A; -fx-text-fill: white;
+                       -fx-font-size: 13px; -fx-font-weight: bold;"
+                        prefWidth="130" prefHeight="30" />
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER">
+            <children>
+                <Button fx:id="reproducirButton" text="Reproducir video" onAction="#reproducirVideo"
+                        style="-fx-background-color: #8BC34A; -fx-text-fill: white;
+                       -fx-font-size: 14px; -fx-font-weight: bold;"
+                        prefWidth="180" prefHeight="35" />
+            </children>
+            <VBox.margin>
+                <Insets top="5" />
+            </VBox.margin>
+        </HBox>
+
+        <VBox style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #ccc;
+                 -fx-border-width: 2;" prefHeight="120" alignment="TOP_LEFT" spacing="8">
+            <children>
+                <Label text="Reproduciendo:" style="-fx-font-size: 13px; -fx-font-weight: bold;" />
+                <Label fx:id="reproduciendoLabel" text="" wrapText="true"
+                       style="-fx-font-size: 12px; -fx-text-fill: #555;" />
+            </children>
+        </VBox>
+
+    </children>
+</VBox>

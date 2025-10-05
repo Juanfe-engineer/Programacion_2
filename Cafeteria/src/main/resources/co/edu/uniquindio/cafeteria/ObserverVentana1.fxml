@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.cafeteria.Controller.ObserverVentana1Controller"
+      prefHeight="400" prefWidth="450"
+      spacing="15" style="-fx-background-color: #e3f2fd; -fx-padding: 20;">
+
+    <children>
+        <Label text="Monitor de Pedidos - Cocina" textAlignment="CENTER"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1565c0;">
+            <VBox.margin>
+                <Insets bottom="5" />
+            </VBox.margin>
+        </Label>
+
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15;
+                              -fx-border-color: #90caf9; -fx-border-width: 2; -fx-border-radius: 5;">
+            <children>
+                <Label text="PEDIDO ACTUAL" style="-fx-font-size: 12px; -fx-font-weight: bold;
+                                             -fx-text-fill: #1976d2;" />
+
+                <Label fx:id="pedidoLabel" text="Esperando pedido..."
+                       style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+
+                <Label fx:id="costoLabel" text="Costo: $0.0"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2e7d32;" />
+            </children>
+        </VBox>
+
+        <VBox VBox.vgrow="ALWAYS" spacing="5">
+            <children>
+                <Label text="HISTORIAL" style="-fx-font-size: 12px; -fx-font-weight: bold;
+                                         -fx-text-fill: #1565c0;" />
+
+                <TextArea fx:id="historialTextArea" VBox.vgrow="ALWAYS"
+                          style="-fx-font-family: 'Courier New'; -fx-font-size: 11px;"
+                          wrapText="true" />
+            </children>
+        </VBox>
+
+    </children>
+</VBox>

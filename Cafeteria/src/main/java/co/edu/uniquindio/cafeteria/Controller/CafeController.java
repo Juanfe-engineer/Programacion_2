@@ -1,4 +1,4 @@
-package co.edu.uniquindio.cafeteria;
+package co.edu.uniquindio.cafeteria.Controller;
 
 import co.edu.uniquindio.cafeteria.Model.Cafe;
 import co.edu.uniquindio.cafeteria.Model.CafeSimple;
@@ -6,6 +6,11 @@ import co.edu.uniquindio.cafeteria.Model.Decorations.AzucarDecorator;
 import co.edu.uniquindio.cafeteria.Model.Decorations.CanelaDecorator;
 import co.edu.uniquindio.cafeteria.Model.Decorations.LecheDecorator;
 import co.edu.uniquindio.cafeteria.Model.Decorations.WhiskyDecorator;
+import co.edu.uniquindio.cafeteria.Model.Strategy.MetodoPreparacion;
+import co.edu.uniquindio.cafeteria.Model.Strategy.MetodoExpresso;
+import co.edu.uniquindio.cafeteria.Model.Strategy.MetodoFiltrado;
+import co.edu.uniquindio.cafeteria.Model.Strategy.MetodoFrances;
+import co.edu.uniquindio.cafeteria.Model.Observer.CafeteriaObservable;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -27,18 +32,31 @@ public class CafeController implements Initializable {
     @FXML private ToggleGroup tipoCafeGroup;
 
     @FXML private Button calcularButton;
-    @FXML private Button metodoButton;
+    @FXML private ComboBox<String> metodoComboBox;
 
     @FXML private Label costoLabel;
     @FXML private Label ingredientesLabel;
 
     private DecimalFormat df = new DecimalFormat("#.#");
+    private MetodoPreparacion metodoSeleccionado;
+    private CafeteriaObservable cafeteriaObservable;
+
+    public void setCafeteriaObservable(CafeteriaObservable observable) {
+        this.cafeteriaObservable = observable;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         especialRadio.setSelected(true);
 
-        // Agregar listeners para cálculo automático
+        // Configurar ComboBox con métodos de preparación
+        metodoComboBox.getItems().addAll("Espresso", "Filtrado", "Prensa Francesa");
+        metodoComboBox.setValue("Espresso");
+        metodoSeleccionado = new MetodoExpresso();
+
+        // Listener para cambio de método
+        metodoComboBox.setOnAction(e -> cambiarMetodo());
+
         lecheCheckBox.setOnAction(e -> calcular());
         azucarCheckBox.setOnAction(e -> calcular());
         wiskyCheckBox.setOnAction(e -> calcular());
@@ -46,17 +64,29 @@ public class CafeController implements Initializable {
         especialRadio.setOnAction(e -> calcular());
         pasillaRadio.setOnAction(e -> calcular());
 
-        // Cálculo inicial
         calcular();
+    }
+
+    private void cambiarMetodo() {
+        String metodo = metodoComboBox.getValue();
+        switch (metodo) {
+            case "Espresso":
+                metodoSeleccionado = new MetodoExpresso();
+                break;
+            case "Filtrado":
+                metodoSeleccionado = new MetodoFiltrado();
+                break;
+            case "Prensa Francesa":
+                metodoSeleccionado = new MetodoFrances();
+                break;
+        }
     }
 
     @FXML
     public void calcular() {
         try {
-
             String tipoCafe = especialRadio.isSelected() ? "Especial" : "Pasilla";
             Cafe cafe = new CafeSimple(tipoCafe);
-
 
             if (lecheCheckBox.isSelected()) {
                 cafe = new LecheDecorator(cafe);
@@ -74,38 +104,28 @@ public class CafeController implements Initializable {
             costoLabel.setText("Costo: $" + df.format(cafe.getCosto()));
             ingredientesLabel.setText("Ingredientes: " + cafe.getDescripcion());
 
+            // Notificar a observadores
+            if (cafeteriaObservable != null) {
+                cafeteriaObservable.nuevoPedido(
+                        "Café " + tipoCafe,
+                        cafe.getCosto(),
+                        cafe.getDescripcion()
+                );
+            }
+
         } catch (Exception e) {
             mostrarError("Error al calcular", "Ocurrió un error durante el cálculo: " + e.getMessage());
         }
     }
 
-
     @FXML
     public void mostrarMetodo() {
-        StringBuilder metodo = new StringBuilder();
-        metodo.append("MÉTODO DE PREPARACIÓN:\n\n");
-
         String tipoCafe = especialRadio.isSelected() ? "Especial" : "Pasilla";
-        metodo.append("1. Preparar café ").append(tipoCafe.toLowerCase()).append("\n");
+        String ingredientes = ingredientesLabel.getText();
 
-        int paso = 2;
-        if (lecheCheckBox.isSelected()) {
-            metodo.append(paso++).append(". Agregar leche caliente\n");
-        }
-        if (azucarCheckBox.isSelected()) {
-            metodo.append(paso++).append(". Endulzar con azúcar al gusto\n");
-        }
-        if (wiskyCheckBox.isSelected()) {
-            metodo.append(paso++).append(". Añadir unas gotas de whisky\n");
-        }
-        if (canelaCheckBox.isSelected()) {
-            metodo.append(paso++).append(". Espolvorear canela en polvo\n");
-        }
+        String metodoTexto = metodoSeleccionado.prepararCafe(tipoCafe, ingredientes);
 
-        metodo.append(paso).append(". Mezclar suavemente y servir caliente\n");
-        metodo.append("\n¡Disfrute su café!");
-
-        mostrarInformacion("Método de Preparación", metodo.toString());
+        mostrarInformacion("Método de Preparación - " + metodoComboBox.getValue(), metodoTexto);
     }
 
     private void mostrarError(String titulo, String mensaje) {
@@ -122,7 +142,7 @@ public class CafeController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.setResizable(true);
-        alert.getDialogPane().setPrefSize(400, 300);
+        alert.getDialogPane().setPrefSize(450, 400);
         alert.showAndWait();
     }
 }
